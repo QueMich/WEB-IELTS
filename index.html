@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Vocabulary Master</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎯 IELTS Vocabulary Master</h1>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Trang chủ</a>
+                <a href="#flashcards" class="nav-link">Flashcards</a>
+                <a href="#quiz" class="nav-link">Bài tập</a>
+                <a href="#my-lessons" class="nav-link">Bài học của tôi</a>
+                <a href="#progress" class="nav-link">Tiến độ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h2>Luyện Từ Vựng IELTS Hiệu Quả</h2>
+                    <p>Học 1000+ từ vựng IELTS theo chủ đề với phương pháp thông minh và khoa học</p>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <h3>1,200+</h3>
+                            <p>Từ vựng IELTS</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>15</h3>
+                            <p>Chủ đề</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>98%</h3>
+                            <p>Hiệu quả</p>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" onclick="showSection('flashcards')">
+                            <i class="fas fa-play"></i> Bắt đầu học ngay
+                        </button>
+                        <button class="btn btn-secondary btn-large" onclick="showSection('my-lessons')">
+                            <i class="fas fa-book"></i> Quản lý bài học
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="features-grid">
+                    <h3>Tính năng nổi bật</h3>
+                    <div class="features">
+                        <div class="feature-card">
+                            <i class="fas fa-layer-group"></i>
+                            <h4>Flashcards thông minh</h4>
+                            <p>Học từ vựng với hệ thống flashcard 2 mặt, phát âm và ví dụ</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-tasks"></i>
+                            <h4>Bài tập đa dạng</h4>
+                            <p>Trắc nghiệm, điền từ, nối từ với nhiều dạng bài tập khác nhau</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Theo dõi tiến độ</h4>
+                            <p>Thống kê chi tiết quá trình học tập và cải thiện</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-edit"></i>
+                            <h4>Tùy chỉnh bài học</h4>
+                            <p>Tạo và chỉnh sửa bài học theo nhu cầu cá nhân</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic Selection -->
+                <div class="topics-grid">
+                    <h3>Chọn chủ đề học tập</h3>
+                    <div class="topics" id="topicsContainer">
+                        <!-- Topics will be loaded by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flashcards Section -->
+        <section id="flashcards" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📚 Flashcards Học Từ Vựng</h2>
+                    <p>Học từ mới với phương pháp flashcard khoa học</p>
+                </div>
+                
+                <div class="flashcard-controls">
+                    <div class="control-group">
+                        <label for="topicSelect">Chọn chủ đề:</label>
+                        <select id="topicSelect" class="topic-select">
+                            <option value="">-- Chọn chủ đề --</option>
+                        </select>
+                    </div>
+                    <button id="startLearning" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Bắt đầu học
+                    </button>
+                </div>
+                
+                <div class="flashcard-area">
+                    <div class="flashcard-container" id="flashcardContainer">
+                        <div class="flashcard" id="flashcard">
+                            <div class="flashcard-front">
+                                <div class="flashcard-content">
+                                    <h3 id="word">Chọn chủ đề để bắt đầu</h3>
+                                    <div class="phonetic" id="phonetic">/ˈflæʃ.kɑːrd/</div>
+                                    <button class="btn-speak" onclick="speakCurrentWord()">
+                                        <i class="fas fa-volume-up"></i> Phát âm
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="flashcard-content">
+                                    <div class="definition" id="definition">Nhấn nút "Bắt đầu học" để bắt đầu</div>
+                                    <div class="example" id="example">Example sentence will appear here</div>
+                                    <div class="synonyms" id="synonyms">Synonyms: ...</div>
+                                    <div class="flashcard-actions">
+                                        <button class="btn-save-word" onclick="saveCurrentWord()">
+                                            <i class="fas fa-bookmark"></i> Lưu từ
+                                        </button>
+                                        <button class="btn-mark-difficult" onclick="markCurrentWordDifficult()">
+                                            <i class="fas fa-star"></i> Đánh dấu khó
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flashcard-navigation">
+                        <button id="prevCard" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Trước
+                        </button>
+                        <button id="flipCard" class="btn btn-primary">
+                            <i class="fas fa-sync-alt"></i> Lật thẻ
+                        </button>
+                        <button id="nextCard" class="btn btn-secondary">
+                            Tiếp theo <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="progress-indicator">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span id="currentCard">0</span> / <span id="totalCards">0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📝 Bài Tập Kiểm Tra</h2>
+                    <p>Luyện tập và củng cố kiến thức với các dạng bài tập đa dạng</p>
+                </div>
+                
+                <div class="quiz-controls">
+                    <div class="control-group">
+                        <label for="quizTopicSelect">Chủ đề:</label>
+                        <select id="quizTopicSelect" class="topic-select">
+                            <option value="">-- Chọn chủ đề --</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="quizType">Dạng bài:</label>
+                        <select id="quizType" class="topic-select">
+                            <option value="multiple-choice">Trắc nghiệm</option>
+                            <option value="matching">Nối từ</option>
+                            <option value="fill-blank">Điền từ</option>
+                        </select>
+                    </div>
+                    <button id="startQuiz" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Bắt đầu kiểm tra
+                    </button>
+                </div>
+                
+                <div class="quiz-area">
+                    <div class="quiz-container" id="quizContainer">
+                        <div class="quiz-welcome" id="quizWelcome">
+                            <div class="welcome-content">
+                                <i class="fas fa-tasks"></i>
+                                <h3>Sẵn sàng kiểm tra kiến thức?</h3>
+                                <p>Chọn chủ đề và dạng bài tập để bắt đầu</p>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-active" id="quizActive" style="display: none;">
+                            <div class="quiz-question" id="quizQuestion">
+                                <h3 id="questionText">Câu hỏi sẽ hiển thị ở đây</h3>
+                                <div class="quiz-options" id="quizOptions">
+                                    <!-- Options will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div class="quiz-feedback" id="quizFeedback"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-actions" id="quizActions" style="display: none;">
+                        <button id="checkAnswer" class="btn btn-primary">
+                            <i class="fas fa-check"></i> Kiểm tra đáp án
+                        </button>
+                        <button id="nextQuestion" class="btn btn-secondary">
+                            <i class="fas fa-arrow-right"></i> Câu tiếp theo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Lessons Section -->
+        <section id="my-lessons" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📖 Bài Học Của Tôi</h2>
+                    <p>Quản lý và tùy chỉnh bài học theo nhu cầu cá nhân</p>
+                </div>
+
+                <div class="lessons-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" onclick="openTab('create-tab')">Tạo bài học</button>
+                        <button class="tab-btn" onclick="openTab('saved-tab')">Bài học đã lưu</button>
+                        <button class="tab-btn" onclick="openTab('writing-tab')">Writing Templates</button>
+                        <button class="tab-btn" onclick="openTab('speaking-tab')">Speaking Notes</button>
+                    </div>
+
+                    <!-- Create Lesson Tab -->
+                    <div id="create-tab" class="tab-content active">
+                        <div class="create-lesson">
+                            <h3><i class="fas fa-plus"></i> Tạo bài học mới</h3>
+                            <div class="lesson-form">
+                                <div class="form-group">
+                                    <label for="lessonTitle">Tiêu đề bài học:</label>
+                                    <input type="text" id="lessonTitle" placeholder="Nhập tiêu đề bài học..." class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lessonType">Loại bài học:</label>
+                                    <select id="lessonType" class="form-select">
+                                        <option value="vocabulary">Từ vựng</option>
+                                        <option value="writing">Writing Template</option>
+                                        <option value="speaking">Speaking Notes</option>
+                                        <option value="custom">Tùy chỉnh</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lessonContent">Nội dung bài học:</label>
+                                    <div class="text-tools">
+                                        <button type="button" class="text-tool-btn" onclick="formatText('lessonContent', 'bold')">
+                                            <i class="fas fa-bold"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="formatText('lessonContent', 'italic')">
+                                            <i class="fas fa-italic"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="formatText('lessonContent', 'underline')">
+                                            <i class="fas fa-underline"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="formatText('lessonContent', 'bullet')">
+                                            <i class="fas fa-list-ul"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="formatText('lessonContent', 'number')">
+                                            <i class="fas fa-list-ol"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="pasteFromClipboard('lessonContent')">
+                                            <i class="fas fa-paste"></i> Paste
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="clearFormatting('lessonContent')">
+                                            <i class="fas fa-broom"></i> Xóa định dạng
+                                        </button>
+                                    </div>
+                                    <textarea id="lessonContent" placeholder="Nhập nội dung bài học... Bạn có thể paste text từ bất kỳ đâu và sử dụng các công cụ định dạng bên trên." class="form-textarea" rows="8"></textarea>
+                                    <div class="word-count" id="lessonContentWordCount">0 từ</div>
+                                </div>
+                                <button id="saveLesson" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Lưu bài học
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Saved Lessons Tab -->
+                    <div id="saved-tab" class="tab-content">
+                        <div class="saved-lessons">
+                            <h3><i class="fas fa-bookmark"></i> Bài học đã lưu</h3>
+                            <div class="lessons-grid" id="lessonsGrid">
+                                <!-- Bài học sẽ được load bằng JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Writing Templates Tab -->
+                    <div id="writing-tab" class="tab-content">
+                        <div class="writing-section">
+                            <div class="section-header">
+                                <h3><i class="fas fa-edit"></i> Cấu trúc Writing</h3>
+                                <p>Tạo và quản lý templates cho bài viết IELTS</p>
+                            </div>
+                            
+                            <div class="template-form">
+                                <div class="form-group">
+                                    <label for="templateType">Loại template:</label>
+                                    <select id="templateType" class="form-select">
+                                        <option value="introduction">Introduction</option>
+                                        <option value="body-paragraph">Body Paragraph</option>
+                                        <option value="conclusion">Conclusion</option>
+                                        <option value="opinion-essay">Opinion Essay</option>
+                                        <option value="discussion-essay">Discussion Essay</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="templateStructure">Cấu trúc template:</label>
+                                    <div class="text-tools">
+                                        <button type="button" class="text-tool-btn" onclick="formatText('templateStructure', 'bold')">
+                                            <i class="fas fa-bold"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="formatText('templateStructure', 'italic')">
+                                            <i class="fas fa-italic"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="formatText('templateStructure', 'bullet')">
+                                            <i class="fas fa-list-ul"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="pasteFromClipboard('templateStructure')">
+                                            <i class="fas fa-paste"></i> Paste
+                                        </button>
+                                    </div>
+                                    <textarea id="templateStructure" placeholder="Nhập cấu trúc template..." class="form-textarea" rows="6"></textarea>
+                                    <div class="word-count" id="templateStructureWordCount">0 từ</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="templateExample">Ví dụ minh họa (tùy chọn):</label>
+                                    <textarea id="templateExample" placeholder="Ví dụ minh họa..." class="form-textarea" rows="4"></textarea>
+                                </div>
+                                <button id="saveTemplate" class="btn btn-success">
+                                    <i class="fas fa-save"></i> Lưu Template
+                                </button>
+                            </div>
+                            
+                            <div class="templates-list" id="templatesList">
+                                <!-- Templates sẽ được load ở đây -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Speaking Notes Tab -->
+                    <div id="speaking-tab" class="tab-content">
+                        <div class="speaking-section">
+                            <div class="section-header">
+                                <h3><i class="fas fa-microphone"></i> Ghi chú Speaking</h3>
+                                <p>Chuẩn bị cho phần thi nói IELTS</p>
+                            </div>
+                            
+                            <div class="speaking-form">
+                                <div class="form-group">
+                                    <label for="speakingPart">Phần thi:</label>
+                                    <select id="speakingPart" class="form-select">
+                                        <option value="part1">Part 1</option>
+                                        <option value="part2">Part 2</option>
+                                        <option value="part3">Part 3</option>
+                                        <option value="expressions">Useful Expressions</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="speakingTopic">Chủ đề:</label>
+                                    <input type="text" id="speakingTopic" placeholder="Nhập chủ đề..." class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="speakingContent">Nội dung ghi chú:</label>
+                                    <div class="text-tools">
+                                        <button type="button" class="text-tool-btn" onclick="formatText('speakingContent', 'bold')">
+                                            <i class="fas fa-bold"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="formatText('speakingContent', 'italic')">
+                                            <i class="fas fa-italic"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="formatText('speakingContent', 'bullet')">
+                                            <i class="fas fa-list-ul"></i>
+                                        </button>
+                                        <button type="button" class="text-tool-btn" onclick="pasteFromClipboard('speakingContent')">
+                                            <i class="fas fa-paste"></i> Paste
+                                        </button>
+                                    </div>
+                                    <textarea id="speakingContent" placeholder="Nhập nội dung ghi chú..." class="form-textarea" rows="8"></textarea>
+                                    <div class="word-count" id="speakingContentWordCount">0 từ</div>
+                                </div>
+                                <button id="saveSpeakingNote" class="btn btn-info">
+                                    <i class="fas fa-save"></i> Lưu ghi chú
+                                </button>
+                            </div>
+                            
+                            <div class="speaking-notes-list" id="speakingNotesList">
+                                <!-- Speaking notes sẽ được load ở đây -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📊 Theo Dõi Tiến Độ</h2>
+                    <p>Theo dõi quá trình học tập và đánh giá hiệu quả</p>
+                </div>
+
+                <div class="progress-overview">
+                    <div class="progress-stats">
+                        <div class="progress-card">
+                            <div class="progress-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="progress-info">
+                                <h3>Tổng số từ đã học</h3>
+                                <div class="progress-number" id="wordsLearned">0</div>
+                            </div>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="progress-info">
+                                <h3>Độ chính xác</h3>
+                                <div class="progress-number" id="accuracyRate">0%</div>
+                            </div>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="progress-info">
+                                <h3>Chuỗi ngày học</h3>
+                                <div class="progress-number" id="learningStreak">0</div>
+                            </div>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="progress-info">
+                                <h3>Bài học đã tạo</h3>
+                                <div class="progress-number" id="lessonsCreated">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-details">
+                    <div class="progress-column">
+                        <div class="difficult-words">
+                            <h3><i class="fas fa-star"></i> Từ khó cần ôn tập</h3>
+                            <div class="words-list" id="difficultWordsList">
+                                <!-- Difficult words will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-column">
+                        <div class="recent-lessons">
+                            <h3><i class="fas fa-history"></i> Bài học gần đây</h3>
+                            <div class="lessons-list" id="recentLessonsList">
+                                <!-- Recent lessons will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="study-tips">
+                    <h3><i class="fas fa-lightbulb"></i> Mẹo học tập</h3>
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <i class="fas fa-brain"></i>
+                            <h4>Học đều đặn</h4>
+                            <p>Dành ít nhất 30 phút mỗi ngày để học từ mới</p>
+                        </div>
+                        <div class="tip-card">
+                            <i class="fas fa-repeat"></i>
+                            <h4>Ôn tập thường xuyên</h4>
+                            <p>Ôn lại từ vựng sau 1 ngày, 1 tuần và 1 tháng</p>
+                        </div>
+                        <div class="tip-card">
+                            <i class="fas fa-comments"></i>
+                            <h4>Thực hành nói</h4>
+                            <p>Sử dụng từ mới trong các tình huống giao tiếp</p>
+                        </div>
+                        <div class="tip-card">
+                            <i class="fas fa-pen-fancy"></i>
+                            <h4>Viết hàng ngày</h4>
+                            <p>Áp dụng từ vựng vào bài viết IELTS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Edit Modals -->
+    <!-- Edit Lesson Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> Chỉnh sửa bài học</h3>
+                <span class="close" onclick="closeEditModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editLessonId">
+                <div class="form-group">
+                    <label>Tiêu đề:</label>
+                    <input type="text" id="editLessonTitle" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Loại bài học:</label>
+                    <select id="editLessonType" class="form-select">
+                        <option value="vocabulary">Từ vựng</option>
+                        <option value="writing">Writing Template</option>
+                        <option value="speaking">Speaking Notes</option>
+                        <option value="custom">Tùy chỉnh</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung:</label>
+                    <div class="text-tools">
+                        <button type="button" class="text-tool-btn" onclick="formatText('editLessonContent', 'bold')">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button type="button" class="text-tool-btn" onclick="formatText('editLessonContent', 'italic')">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button type="button" class="text-tool-btn" onclick="formatText('editLessonContent', 'bullet')">
+                            <i class="fas fa-list-ul"></i>
+                        </button>
+                        <button type="button" class="text-tool-btn" onclick="pasteFromClipboard('editLessonContent')">
+                            <i class="fas fa-paste"></i> Paste
+                        </button>
+                    </div>
+                    <textarea id="editLessonContent" class="form-textarea" rows="8"></textarea>
+                    <div class="word-count" id="editLessonContentWordCount">0 từ</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeEditModal()">Hủy</button>
+                <button class="btn btn-primary" onclick="saveEditedLesson()">
+                    <i class="fas fa-save"></i> Lưu thay đổi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Template Modal -->
+    <div id="editTemplateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> Chỉnh sửa Template</h3>
+                <span class="close" onclick="closeEditTemplateModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editTemplateId">
+                <div class="form-group">
+                    <label>Loại template:</label>
+                    <select id="editTemplateType" class="form-select">
+                        <option value="introduction">Introduction</option>
+                        <option value="body-paragraph">Body Paragraph</option>
+                        <option value="conclusion">Conclusion</option>
+                        <option value="opinion-essay">Opinion Essay</option>
+                        <option value="discussion-essay">Discussion Essay</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Cấu trúc:</label>
+                    <textarea id="editTemplateStructure" class="form-textarea" rows="6"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Ví dụ (tùy chọn):</label>
+                    <textarea id="editTemplateExample" class="form-textarea" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeEditTemplateModal()">Hủy</button>
+                <button class="btn btn-primary" onclick="saveEditedTemplate()">
+                    <i class="fas fa-save"></i> Lưu thay đổi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Speaking Modal -->
+    <div id="editSpeakingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> Chỉnh sửa Ghi chú Speaking</h3>
+                <span class="close" onclick="closeEditSpeakingModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editSpeakingId">
+                <div class="form-group">
+                    <label>Phần:</label>
+                    <select id="editSpeakingPart" class="form-select">
+                        <option value="part1">Part 1</option>
+                        <option value="part2">Part 2</option>
+                        <option value="part3">Part 3</option>
+                        <option value="expressions">Useful Expressions</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Chủ đề:</label>
+                    <input type="text" id="editSpeakingTopic" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Nội dung:</label>
+                    <textarea id="editSpeakingContent" class="form-textarea" rows="8"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeEditSpeakingModal()">Hủy</button>
+                <button class="btn btn-primary" onclick="saveEditedSpeakingNote()">
+                    <i class="fas fa-save"></i> Lưu thay đổi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 IELTS Vocabulary Master. Designed for effective IELTS preparation.</p>
+        </div>
+    </footer>
+        <!-- Tab Navigation Functionality -->
+    <script>
+        function openTab(tabId) {
+            // Ẩn tất cả tab content
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Bỏ active tất cả tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Hiện tab được chọn
+            document.getElementById(tabId).classList.add('active');
+            
+            // Active tab button tương ứng
+            event.currentTarget.classList.add('active');
+        }
+
+        // Đánh dấu từ khó
+        function markCurrentWordDifficult() {
+            const currentWord = appState.currentWords[appState.currentCardIndex];
+            if (currentWord) {
+                const added = userDataManager.addDifficultWord(currentWord);
+                if (added) {
+                    const btn = document.querySelector('.btn-mark-difficult');
+                    btn.innerHTML = '<i class="fas fa-star"></i> Đã đánh dấu';
+                    btn.style.background = '#dc2626';
+                    alert('✅ Đã thêm vào từ khó cần ôn tập');
+                } else {
+                    alert('ℹ️ Từ này đã được đánh dấu trước đó.');
+                }
+            }
+        }
+
+        // Cập nhật word count cho các textarea
+        document.addEventListener('DOMContentLoaded', function() {
+            const textareas = ['lessonContent', 'templateStructure', 'speakingContent'];
+            textareas.forEach(id => {
+                const textarea = document.getElementById(id);
+                if (textarea) {
+                    textarea.addEventListener('input', function() {
+                        updateWordCount(id, id + 'WordCount');
+                    });
+                    // Khởi tạo word count
+                    updateWordCount(id, id + 'WordCount');
+                }
+            });
+        });
+
+        function updateWordCount(textareaId, counterId) {
+            const textarea = document.getElementById(textareaId);
+            const counter = document.getElementById(counterId);
+            if (textarea && counter) {
+                const text = textarea.value;
+                const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
+                counter.textContent = `${wordCount} từ`;
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+

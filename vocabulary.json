@@ -1,0 +1,196 @@
+{
+  "topics": [
+    {
+      "id": "education",
+      "name": "Education",
+      "icon": "🎓",
+      "description": "Từ vựng về giáo dục, trường học, học thuật",
+      "color": "#4f46e5",
+      "words": [
+        {
+          "word": "curriculum",
+          "phonetic": "/kəˈrɪk.jə.ləm/",
+          "definition": "The subjects comprising a course of study in a school or college",
+          "vietnamese": "Chương trình giảng dạy",
+          "example": "The school is updating its curriculum to include more technology courses.",
+          "synonyms": ["syllabus", "program of study", "course of study"],
+          "difficulty": "medium",
+          "topic": "education",
+          "type": "noun"
+        },
+        {
+          "word": "scholarship",
+          "phonetic": "/ˈskɒl.ə.ʃɪp/",
+          "definition": "Financial aid awarded to a student for education",
+          "vietnamese": "Học bổng",
+          "example": "She received a scholarship to study at Harvard University.",
+          "synonyms": ["grant", "bursary", "fellowship"],
+          "difficulty": "easy",
+          "topic": "education",
+          "type": "noun"
+        },
+        {
+          "word": "literacy",
+          "phonetic": "/ˈlɪt.ər.ə.si/",
+          "definition": "The ability to read and write",
+          "vietnamese": "Khả năng đọc viết",
+          "example": "Digital literacy is essential in the modern workplace.",
+          "synonyms": ["reading ability", "writing ability", "education"],
+          "difficulty": "medium",
+          "topic": "education",
+          "type": "noun"
+        },
+        {
+          "word": "academic",
+          "phonetic": "/ˌæk.əˈdem.ɪk/",
+          "definition": "Related to education and scholarship",
+          "vietnamese": "Thuộc về học thuật",
+          "example": "She has a brilliant academic record.",
+          "synonyms": ["educational", "scholarly", "theoretical"],
+          "difficulty": "medium",
+          "topic": "education",
+          "type": "adjective"
+        },
+        {
+          "word": "tuition",
+          "phonetic": "/tjuːˈɪʃ.ən/",
+          "definition": "Teaching or instruction, especially of individuals or small groups",
+          "vietnamese": "Học phí, sự giảng dạy",
+          "example": "University tuition fees have increased significantly.",
+          "synonyms": ["teaching", "instruction", "education"],
+          "difficulty": "medium",
+          "topic": "education",
+          "type": "noun"
+        }
+      ]
+    },
+    {
+      "id": "environment",
+      "name": "Environment",
+      "icon": "🌍",
+      "description": "Từ vựng về môi trường, sinh thái, bảo tồn",
+      "color": "#10b981",
+      "words": [
+        {
+          "word": "sustainability",
+          "phonetic": "/səˌsteɪ.nəˈbɪl.ə.ti/",
+          "definition": "Avoidance of the depletion of natural resources",
+          "vietnamese": "Tính bền vững",
+          "example": "Companies are focusing on sustainability to protect the environment.",
+          "synonyms": ["endurance", "maintainability", "ecological balance"],
+          "difficulty": "hard",
+          "topic": "environment",
+          "type": "noun"
+        },
+        {
+          "word": "biodiversity",
+          "phonetic": "/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/",
+          "definition": "The variety of plant and animal life in a particular habitat",
+          "vietnamese": "Đa dạng sinh học",
+          "example": "The rainforest has incredible biodiversity with thousands of species.",
+          "synonyms": ["biological diversity", "ecological variety"],
+          "difficulty": "hard",
+          "topic": "environment",
+          "type": "noun"
+        },
+        {
+          "word": "renewable",
+          "phonetic": "/rɪˈnjuː.ə.bəl/",
+          "definition": "Capable of being renewed or replenished",
+          "vietnamese": "Có thể tái tạo",
+          "example": "Solar and wind are renewable energy sources.",
+          "synonyms": ["sustainable", "replenishable"],
+          "difficulty": "medium",
+          "topic": "environment",
+          "type": "adjective"
+        },
+        {
+          "word": "conservation",
+          "phonetic": "/ˌkɒn.səˈveɪ.ʃən/",
+          "definition": "Protection and preservation of the environment",
+          "vietnamese": "Bảo tồn",
+          "example": "Wildlife conservation is crucial for endangered species.",
+          "synonyms": ["preservation", "protection", "safeguarding"],
+          "difficulty": "medium",
+          "topic": "environment",
+          "type": "noun"
+        },
+        {
+          "word": "emissions",
+          "phonetic": "/ɪˈmɪʃ.ənz/",
+          "definition": "Production and discharge of something, especially gas or radiation",
+          "vietnamese": "Khí thải",
+          "example": "Carbon emissions contribute to global warming.",
+          "synonyms": ["discharge", "release", "pollutants"],
+          "difficulty": "medium",
+          "topic": "environment",
+          "type": "noun"
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "name": "Technology",
+      "icon": "💻",
+      "description": "Từ vựng về công nghệ, kỹ thuật số, đổi mới",
+      "color": "#f59e0b",
+      "words": [
+        {
+          "word": "innovation",
+          "phonetic": "/ˌɪn.əˈveɪ.ʃən/",
+          "definition": "The introduction of new ideas or methods",
+          "vietnamese": "Sự đổi mới, sáng tạo",
+          "example": "Technological innovation has changed how we communicate.",
+          "synonyms": ["invention", "creativity", "novelty"],
+          "difficulty": "medium",
+          "topic": "technology",
+          "type": "noun"
+        },
+        {
+          "word": "automation",
+          "phonetic": "/ˌɔː.təˈmeɪ.ʃən/",
+          "definition": "The use of automatic equipment in manufacturing",
+          "vietnamese": "Tự động hóa",
+          "example": "Factory automation has increased production efficiency.",
+          "synonyms": ["mechanization", "computerization"],
+          "difficulty": "medium",
+          "topic": "technology",
+          "type": "noun"
+        },
+        {
+          "word": "digital",
+          "phonetic": "/ˈdɪdʒ.ɪ.təl/",
+          "definition": "Relating to or using computer technology",
+          "vietnamese": "Kỹ thuật số",
+          "example": "Digital transformation is affecting all industries.",
+          "synonyms": ["electronic", "computerized", "online"],
+          "difficulty": "easy",
+          "topic": "technology",
+          "type": "adjective"
+        },
+        {
+          "word": "artificial intelligence",
+          "phonetic": "/ˌɑː.tɪ.fɪʃ.əl ɪnˈtel.ɪ.dʒəns/",
+          "definition": "The simulation of human intelligence by machines",
+          "vietnamese": "Trí tuệ nhân tạo",
+          "example": "Artificial intelligence is revolutionizing healthcare.",
+          "synonyms": ["AI", "machine learning", "cognitive computing"],
+          "difficulty": "hard",
+          "topic": "technology",
+          "type": "noun"
+        },
+        {
+          "word": "cybersecurity",
+          "phonetic": "/ˈsaɪ.bə.sɪ.kjʊə.rə.ti/",
+          "definition": "Protection of internet-connected systems from cyber threats",
+          "vietnamese": "An ninh mạng",
+          "example": "Companies invest heavily in cybersecurity to protect data.",
+          "synonyms": ["information security", "network security", "cyber protection"],
+          "difficulty": "hard",
+          "topic": "technology",
+          "type": "noun"
+        }
+      ]
+    }
+  ]
+}
